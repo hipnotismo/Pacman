@@ -23,6 +23,7 @@ namespace gradius {
 
 			InitGame();
 			menu::InitMenu();
+			credits::InitCredits();
 
 			while (!WindowShouldClose())
 			{
@@ -37,6 +38,7 @@ namespace gradius {
 
 		static void InitGame() {
 
+			InitWindow(screenWidth, screenHeight, "PACMAN");
 			
 
 			SetTargetFPS(60);

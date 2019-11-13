@@ -14,7 +14,12 @@ namespace gradius {
 	
 
 		void InitCredits() {
-			
+
+			rec1.height = 40;
+			rec1.width = 100;
+			rec1.x = 10;
+			rec1.y = 10;
+		
 		}
 		void UpdateCredits() {
 			DrawCredits();
@@ -25,7 +30,7 @@ namespace gradius {
 			if (CheckCollisionPointRec(mousePoint, rec1)) {
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-					gameplay::Screens = gameplay::Game;
+					gameplay::Screens = gameplay::Menu;
 				}
 			}
 			
@@ -36,14 +41,10 @@ namespace gradius {
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 
-
-			DrawTexture(background2, 0, 0, WHITE);
-
-
 			DrawRectangle(rec1.x, rec1.y, rec1.width, rec1.height, BLACK);
 			
 
-			DrawText("jugar", rec1.x + 18, rec1.y + 10, 18, WHITE);
+			DrawText("atras", rec1.x + 18, rec1.y + 10, 18, WHITE);
 			
 
 			EndDrawing();
