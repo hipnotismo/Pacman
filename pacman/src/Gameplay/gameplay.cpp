@@ -2,6 +2,7 @@
 
 #include "Gameplay/gameplay.h"
 #include "Menu/Menu.h"
+#include "Credits/credits.h"
 
 namespace gradius {
 	namespace gameplay {
@@ -127,6 +128,9 @@ namespace gradius {
 				/*case Controls: {
 					Controls::UpdateControls();
 				}*/
+			case Credits: {
+				credits::UpdateCredits();
+			}
 			}
 		}
 

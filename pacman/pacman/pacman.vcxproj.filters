@@ -11,6 +11,9 @@
     <Filter Include="menu">
       <UniqueIdentifier>{6a69c070-a2cd-40ca-ae41-a99f81a47518}</UniqueIdentifier>
     </Filter>
+    <Filter Include="credits">
+      <UniqueIdentifier>{e82f9bb9-530a-43e1-81b8-9597e4845f00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
@@ -20,6 +23,9 @@
     <ClCompile Include="..\src\Gameplay\gameplay.cpp">
       <Filter>gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Credits\credits.cpp">
+      <Filter>credits</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Menu\menu.h">
@@ -27,6 +33,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Gameplay\gameplay.h">
       <Filter>gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Credits\credits.h">
+      <Filter>credits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

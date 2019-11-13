@@ -44,13 +44,13 @@ namespace gradius {
 					gameplay::Screens = gameplay::Game;
 				}
 			}
-			/*
+			
 			if (CheckCollisionPointRec(mousePoint, rec2)) {
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 					gameplay::Screens = gameplay::Credits;
 				}
 			}
-			*/
+			
 			if (CheckCollisionPointRec(mousePoint, rec3)) {
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -75,7 +75,7 @@ namespace gradius {
 			DrawText("jugar", rec1.x + 18, rec1.y + 10, 18, WHITE);
 			DrawText("Creditos", rec2.x + 5, rec2.y + 10, 18, WHITE);
 			DrawText("Controles", rec3.x + 5, rec3.y + 10, 18, WHITE);
-			DrawText("PONG", GetScreenWidth() / 2 - 120, 100, 50, MAROON);
+			DrawText("PACMAN", GetScreenWidth() / 2 - 120, 100, 50, MAROON);
 
 			EndDrawing();
 		}
