@@ -13,11 +13,18 @@ namespace gradius {
 
 		GameScreen Screens;
 
-		const int screenWidth = 800;
-		const int screenHeight = 450;
+		const int screenWidth = 1600;
+		const int screenHeight = 800;
+
+		static bool gameOver = false;
+		static bool pause = false;
 
 		Vector2 playerPosition;
 		int playerRadius;
+
+		Vector2 point1;
+		int pointRadius1;
+
 		int Core()
 		{
 
@@ -41,8 +48,11 @@ namespace gradius {
 			InitWindow(screenWidth, screenHeight, "PACMAN");
 			
 			playerPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
-			playerRadius = 20;
+			playerRadius = 15;
 			SetTargetFPS(60);
+
+			point1 = { 10, 10 };
+			pointRadius1 = 10;
 		}
 
 		static void Change() {
@@ -65,39 +75,45 @@ namespace gradius {
 		}
 
 		static void UpdateGame() {
-			
-			if(IsKeyDown(KEY_W)) {
-				if (playerPosition.y > 0) {
-					playerPosition.y -= 5.0f;
-				}
-			}
+			if (!gameOver) {
+				if (IsKeyPressed('P')) pause = !pause;
 
-			if (IsKeyDown(KEY_S)) {
-				if (playerPosition.y > 0) {
-					playerPosition.y += 5.0f;
-				}
-			}
+				if (!pause) {
+					if (IsKeyDown(KEY_W)) {
+						if (playerPosition.y > 0) {
+							playerPosition.y -= 5.0f;
+						}
+					}
 
-			if (IsKeyDown(KEY_A)) {
-				if (playerPosition.x > 0) {
-					playerPosition.x -= 5.0f;
-				}
-			}
+					if (IsKeyDown(KEY_S)) {
+						if (playerPosition.y > 0) {
+							playerPosition.y += 5.0f;
+						}
+					}
 
-			if (IsKeyDown(KEY_D)) {
-				if (playerPosition.x > 0) {
-					playerPosition.x += 5.0f;
+					if (IsKeyDown(KEY_A)) {
+						if (playerPosition.x > 0) {
+							playerPosition.x -= 5.0f;
+						}
+					}
+
+					if (IsKeyDown(KEY_D)) {
+						if (playerPosition.x > 0) {
+							playerPosition.x += 5.0f;
+						}
+					}
+
 				}
 			}
-			
 		}
+
 		static void Draw() {
 
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
 			DrawCircleV(playerPosition, static_cast<float>(playerRadius), BLACK);
-			
+			DrawCircleV(point1, static_cast<float>(pointRadius1), GOLD);
 
 			EndDrawing();
 		}

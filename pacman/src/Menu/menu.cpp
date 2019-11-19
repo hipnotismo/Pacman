@@ -50,13 +50,14 @@ namespace gradius {
 					gameplay::Screens = gameplay::Credits;
 				}
 			}
-			
+			/*
 			if (CheckCollisionPointRec(mousePoint, rec3)) {
 
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 					gameplay::Screens = gameplay::Controls;
 				}
 			}
+			*/
 		}
 
 		void DrawMenu() {
