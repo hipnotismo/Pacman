@@ -16,8 +16,8 @@ namespace gradius {
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
-		
-
+		Vector2 playerPosition;
+		int playerRadius;
 		int Core()
 		{
 
@@ -40,7 +40,8 @@ namespace gradius {
 
 			InitWindow(screenWidth, screenHeight, "PACMAN");
 			
-
+			playerPosition = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
+			playerRadius = 20;
 			SetTargetFPS(60);
 		}
 
@@ -65,7 +66,29 @@ namespace gradius {
 
 		static void UpdateGame() {
 			
+			if(IsKeyDown(KEY_W)) {
+				if (playerPosition.y > 0) {
+					playerPosition.y -= 5.0f;
+				}
+			}
 
+			if (IsKeyDown(KEY_S)) {
+				if (playerPosition.y > 0) {
+					playerPosition.y += 5.0f;
+				}
+			}
+
+			if (IsKeyDown(KEY_A)) {
+				if (playerPosition.x > 0) {
+					playerPosition.x -= 5.0f;
+				}
+			}
+
+			if (IsKeyDown(KEY_D)) {
+				if (playerPosition.x > 0) {
+					playerPosition.x += 5.0f;
+				}
+			}
 			
 		}
 		static void Draw() {
@@ -73,7 +96,7 @@ namespace gradius {
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
-
+			DrawCircleV(playerPosition, static_cast<float>(playerRadius), BLACK);
 			
 
 			EndDrawing();
