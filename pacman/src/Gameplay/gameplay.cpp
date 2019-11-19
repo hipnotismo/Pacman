@@ -22,8 +22,11 @@ namespace gradius {
 		Vector2 playerPosition;
 		int playerRadius;
 
-		Vector2 point1;
-		int pointRadius1;
+		Vector2 pill1;
+		int pillRadius1;
+		bool pill1Active = true;
+
+		int poinst;
 
 		int Core()
 		{
@@ -51,8 +54,10 @@ namespace gradius {
 			playerRadius = 15;
 			SetTargetFPS(60);
 
-			point1 = { 10, 10 };
-			pointRadius1 = 10;
+			pill1 = { 100, 100 };
+			pillRadius1 = 10;
+
+			poinst = 0;
 		}
 
 		static void Change() {
@@ -103,6 +108,10 @@ namespace gradius {
 						}
 					}
 
+					if (CheckCollisionCircles(pill1, pillRadius1, playerPosition, playerRadius)) {
+						if(pill1Active==true){ poinst += 1; }					
+						pill1Active = false;
+					}
 				}
 			}
 		}
@@ -113,8 +122,10 @@ namespace gradius {
 
 			ClearBackground(RAYWHITE);
 			DrawCircleV(playerPosition, static_cast<float>(playerRadius), BLACK);
-			DrawCircleV(point1, static_cast<float>(pointRadius1), GOLD);
-
+			if (pill1Active == true) {
+				DrawCircleV(pill1, static_cast<float>(pillRadius1), GOLD);
+			}
+			DrawText(TextFormat("SCORE %4i", poinst), 20, 20, 40, LIGHTGRAY);
 			EndDrawing();
 		}
 
