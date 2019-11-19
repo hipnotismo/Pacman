@@ -29,8 +29,10 @@ namespace gradius {
 		bool pill1Active = true;
 
 		Rectangle block1;
-		//Vector2 block1;
-		//Vector2 blockPosition;
+		
+		Rectangle menu;
+
+		static Vector2 mousePoint;
 
 		int poinst = 0;
 		int direction;
@@ -69,6 +71,11 @@ namespace gradius {
 			block1.width = static_cast <float>(100);
 			block1.x = static_cast <float>(200);
 			block1.y = static_cast <float>(200);
+
+			menu.height = static_cast <float>(100);
+			menu.width = static_cast <float>(100);
+			menu.x = static_cast <float>(GetScreenWidth()-200);
+			menu.y = static_cast <float>(GetScreenHeight()/6);
 			//block1 = {(static_cast < float>(40),static_cast < float>(40))};
 			//blockPosition= {(static_cast < float>(200),static_cast < float>(200))};
 		}
@@ -150,6 +157,16 @@ namespace gradius {
 						pill1Active = false;
 					}
 				}
+
+				mousePoint = GetMousePosition();
+
+				if (CheckCollisionPointRec(mousePoint,menu)) {
+					if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+						InitGame();
+						pause = !pause;
+						gameplay::Screens = gameplay::Menu;
+					}
+				}
 			}
 		}
 
@@ -164,6 +181,10 @@ namespace gradius {
 				DrawCircleV(pill1, static_cast<float>(pillRadius1), GOLD);
 			}
 			DrawText(TextFormat("SCORE %4i", poinst), 20, 20, 40, LIGHTGRAY);
+
+			if (pause == true) {
+				DrawRectangle(menu.x,menu.y,menu.width,menu.height,GREEN);
+			}
 			EndDrawing();
 		}
 
