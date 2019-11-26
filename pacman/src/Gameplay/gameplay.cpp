@@ -152,38 +152,38 @@ namespace pacman {
 				if (IsKeyPressed('P')) pause = !pause;
 
 				if (!pause) {
-					playerPosition.x += playerSpeed.x;
-					playerPosition.y += playerSpeed.y;
+					playerPosition.x += playerSpeed.x * GetFrameTime();
+					playerPosition.y += playerSpeed.y * GetFrameTime();
 
 					if (IsKeyDown(KEY_W)) {
 						direction = 1;
 						if (playerPosition.y > 0) {
-							playerSpeed.y = -5.0f;
-							playerSpeed.x = 0.0f;
+							playerSpeed.y = -5000.0f * GetFrameTime();
+							playerSpeed.x = 0.0f * GetFrameTime();
 						}
 					}
 
 					if (IsKeyDown(KEY_S)) {
 						direction = 2;
 						if (playerPosition.y > 0) {
-							playerSpeed.y = 5.0f;
-							playerSpeed.x = 0.0f;
+							playerSpeed.y = 5000.0f * GetFrameTime();
+							playerSpeed.x = 0.0f * GetFrameTime();
 						}
 					}
 
 					if (IsKeyDown(KEY_A)) {
 						direction = 3;
 						if (playerPosition.x > 0) {
-							playerSpeed.x = -6.0f;
-							playerSpeed.y = 0.0f;
+							playerSpeed.x = -6000.0f * GetFrameTime();
+							playerSpeed.y = 0.0f * GetFrameTime();
 						}
 					}
 
 					if (IsKeyDown(KEY_D)) {
 						direction = 4;
 						if (playerPosition.x > 0) {
-							playerSpeed.x = 6.0f;
-							playerSpeed.y = 0.0f;
+							playerSpeed.x = 6000.0f * GetFrameTime();
+							playerSpeed.y = 0.0f *  GetFrameTime();
 						}
 					}
 					if (CheckCollisionCircleRec(playerPosition,playerRadius,block1)) {
@@ -194,10 +194,10 @@ namespace pacman {
 							//playerPosition.y = 0.0f;
 						}
 						if (direction == 3) {
-							playerPosition.x += 5.0f;
+							playerPosition.x += 5.0f * GetFrameTime();
 						}
 						if (direction == 4) {
-							playerPosition.x -= 5.0f;
+							playerPosition.x -= 5.0f * GetFrameTime();
 						}
 					}
 					if (CheckCollisionCircles(pill1, pillRadius1, playerPosition, playerRadius)) {
