@@ -4,6 +4,7 @@
 #include "Gameplay/gameplay.h"
 #include "Menu/Menu.h"
 #include "Credits/credits.h"
+#include "Controls/controls.h"
 
 namespace pacman {
 	namespace gameplay {
@@ -43,6 +44,7 @@ namespace pacman {
 			InitGame();
 			menu::InitMenu();
 			credits::InitCredits();
+			controls::InitControls();
 
 			while (!WindowShouldClose())
 			{
@@ -90,9 +92,9 @@ namespace pacman {
 				UpdateFrame();
 
 			} break;
-				/*case Controls: {
-					Controls::UpdateControls();
-				}*/
+			case Controls: {
+				controls::UpdateControls();
+			} break;
 			case Credits: {
 				credits::UpdateCredits();
 			}
