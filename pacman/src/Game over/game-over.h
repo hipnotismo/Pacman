@@ -7,7 +7,6 @@ namespace pacman {
 
 		void InitOver();
 		void UpdateOver();
-		void DrawOver();
 	}
 }
 #endif // Controls_H

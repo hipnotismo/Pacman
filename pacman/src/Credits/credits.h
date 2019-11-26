@@ -7,7 +7,6 @@ namespace pacman {
 
 		void InitCredits();
 		void UpdateCredits();
-		void DrawCredits();
 	}
 }
 #endif // Credits_H

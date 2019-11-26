@@ -1,11 +1,15 @@
-#include "raylib.h"
+#include "Controls/controls.h"
 
 #include <iostream>
-#include "Controls/controls.h"
+
+#include "raylib.h"
+
 #include "Gameplay/gameplay.h"
 
 namespace pacman {
 	namespace controls {
+
+		static void DrawControls();
 
 		Texture2D background2;
 

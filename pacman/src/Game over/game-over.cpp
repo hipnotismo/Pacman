@@ -1,11 +1,14 @@
-#include "raylib.h"
+#include "Game over/game-over.h"
 
 #include <iostream>
-#include "Game over/game-over.h"
+
+#include "raylib.h"
+
 #include "Gameplay/gameplay.h"
 
 namespace pacman {
 	namespace over {
+		static void DrawOver();
 
 		Texture2D background2;
 

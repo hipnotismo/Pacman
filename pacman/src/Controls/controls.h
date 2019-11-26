@@ -7,7 +7,6 @@ namespace pacman {
 
 		void InitControls();
 		void UpdateControls();
-		void DrawControls();
 	}
 }
 #endif // Controls_H

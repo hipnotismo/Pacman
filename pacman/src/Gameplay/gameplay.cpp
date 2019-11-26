@@ -1,11 +1,13 @@
-#include "raylib.h"
+#include "Gameplay/gameplay.h"
 
 #include <iostream>
-#include "Gameplay/gameplay.h"
+
+#include "raylib.h"
+
 #include "Menu/Menu.h"
 #include "Credits/credits.h"
 #include "Controls/controls.h"
-#include"Game over/game-over.h"
+#include "Game over/game-over.h"
 
 namespace pacman {
 	namespace gameplay {
@@ -27,8 +29,17 @@ namespace pacman {
 		Vector2 playerSpeed;
 
 		Vector2 pill1;
+		Vector2 pill2;
+		Vector2 pill3;
+
 		int pillRadius1;
-		bool pill1Active = true;
+		int pillRadius2;
+		int pillRadius3;
+
+		bool pill1Active ;
+		bool pill2Active ;
+		bool pill3Active ;
+
 
 		Rectangle block1;
 		Rectangle block2;
@@ -75,7 +86,16 @@ namespace pacman {
 			points = 0;
 			lives = 3;
 			pill1 = { 100, 100 };
+			pill2 = { 1000, 100 };
+			pill3 = { static_cast<float>(GetScreenWidth()/2),  static_cast<float>(GetScreenHeight() - 500) };
+
 			pillRadius1 = 10;
+			pillRadius2 = 10;
+			pillRadius3 = 10;
+
+			pill1Active = true;
+			pill1Active = true;
+			pill1Active = true;
 
 			block1.height = static_cast <float>(GetScreenHeight());
 			block1.width = static_cast <float>(50);
@@ -184,6 +204,16 @@ namespace pacman {
 						if(pill1Active==true){ points += 1; }					
 						pill1Active = false;
 					}
+
+					if (CheckCollisionCircles(pill2, pillRadius2, playerPosition, playerRadius)) {
+						if (pill1Active == true) { points += 1; }
+						pill1Active = false;
+					}
+
+					if (CheckCollisionCircles(pill3, pillRadius3, playerPosition, playerRadius)) {
+						if (pill1Active == true) { points += 1; }
+						pill1Active = false;
+					}
 				}
 
 				mousePoint = GetMousePosition();
@@ -201,7 +231,7 @@ namespace pacman {
 				}
 			}
 
-			gameplay::Screens = gameplay::End;
+			//gameplay::Screens = gameplay::End;
 		}
 
 		static void Draw() {
@@ -218,12 +248,21 @@ namespace pacman {
 			if (pill1Active == true) {
 				DrawCircleV(pill1, static_cast<float>(pillRadius1), GOLD);
 			}
+
+			if (pill2Active == true) {
+				DrawCircleV(pill2, static_cast<float>(pillRadius2), GOLD);
+			}
+
+			if (pill3Active == true) {
+				DrawCircleV(pill3, static_cast<float>(pillRadius3), GOLD);
+			}
 			DrawText(TextFormat("SCORE %4i", points), 20, 10, 40, LIGHTGRAY);
 			DrawText(TextFormat("LIVES %4i", lives), 1300, 10, 40, LIGHTGRAY);
 
 
 			if (pause == true) {
-				DrawRectangle(menu.x,menu.y,menu.width,menu.height,GREEN);
+				DrawRectangle(menu.x,menu.y,menu.width,menu.height,BLACK);
+				DrawText(TextFormat("menu", points), menu.x + 5, menu.y, 40, WHITE);
 			}
 			EndDrawing();
 		}

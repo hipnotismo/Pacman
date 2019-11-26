@@ -7,7 +7,6 @@ namespace pacman {
 
 		void InitMenu();
 		void UpdateMenu();
-		void DrawMenu();
 	}
 }
 #endif // Menu_H

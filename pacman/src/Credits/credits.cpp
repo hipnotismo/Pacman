@@ -1,11 +1,14 @@
-#include "raylib.h"
+#include "Credits/credits.h"
 
 #include <iostream>
-#include "Credits/credits.h"
+
+#include "raylib.h"
+
 #include "Gameplay/gameplay.h"
 
 namespace pacman {
 	namespace credits {
+		static void DrawCredits();
 
 		Texture2D background2;
 

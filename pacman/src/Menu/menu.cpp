@@ -1,12 +1,14 @@
-#include "raylib.h"
+#include "Menu/menu.h"
 
 #include <iostream>
-#include "Menu/menu.h"
+
+#include "raylib.h"
+
 #include "Gameplay/gameplay.h"
 
 namespace pacman {
 	namespace menu {
-
+		static void DrawMenu();
 		Texture2D background2;
 
 		static Vector2 mousePoint;
