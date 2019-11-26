@@ -1,7 +1,7 @@
 #ifndef Credits_H
 #define Credits_H
 
-namespace gradius {
+namespace pacman {
 	namespace credits {
 
 

@@ -2,7 +2,7 @@
 
 #include "Gameplay/gameplay.h"
 
-using namespace gradius;
+using namespace pacman;
 using namespace gameplay;
 
 int main() {

@@ -5,7 +5,7 @@
 #include "Menu/Menu.h"
 #include "Credits/credits.h"
 
-namespace gradius {
+namespace pacman {
 	namespace gameplay {
 
 		static void InitGame();

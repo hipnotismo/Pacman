@@ -4,7 +4,7 @@
 #include "Menu/menu.h"
 #include "Gameplay/gameplay.h"
 
-namespace gradius {
+namespace pacman {
 	namespace menu {
 
 		Texture2D background2;

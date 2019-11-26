@@ -1,7 +1,7 @@
 #ifndef Gameplay_H
 #define Gameplay_H
 
-namespace gradius {
+namespace pacman {
 	namespace gameplay {
 
 		enum GameScreen

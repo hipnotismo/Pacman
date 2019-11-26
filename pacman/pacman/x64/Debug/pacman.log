@@ -1,0 +1,9 @@
+﻿  credits.cpp
+  gameplay.cpp
+C:\Users\PC\Desktop\Pacman\pacman\src\Credits\credits.cpp(1,10): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory
+  main.cpp
+C:\Users\PC\Desktop\Pacman\pacman\src\Gameplay\gameplay.cpp(1,10): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory
+  menu.cpp
+C:\Users\PC\Desktop\Pacman\pacman\src\main.cpp(1,10): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory
+  Generando código...
+C:\Users\PC\Desktop\Pacman\pacman\src\Menu\menu.cpp(1,10): fatal error C1083: No se puede abrir el archivo incluir: 'raylib.h': No such file or directory

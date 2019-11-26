@@ -1,7 +1,7 @@
 #ifndef Menu_H
 #define Menu_H
 
-namespace gradius {
+namespace pacman {
 	namespace menu {
 
 
