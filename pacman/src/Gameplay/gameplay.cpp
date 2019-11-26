@@ -5,6 +5,7 @@
 #include "Menu/Menu.h"
 #include "Credits/credits.h"
 #include "Controls/controls.h"
+#include"Game over/game-over.h"
 
 namespace pacman {
 	namespace gameplay {
@@ -30,13 +31,17 @@ namespace pacman {
 		bool pill1Active = true;
 
 		Rectangle block1;
+		Rectangle block2;
+		Rectangle block3;
+		Rectangle block4;
 		
 		Rectangle menu;
 
 		static Vector2 mousePoint;
 
-		int poinst = 0;
+		int points;
 		int direction;
+		int lives;
 
 		int Core()
 		{
@@ -45,6 +50,7 @@ namespace pacman {
 			menu::InitMenu();
 			credits::InitCredits();
 			controls::InitControls();
+			over::InitOver();
 
 			while (!WindowShouldClose())
 			{
@@ -66,13 +72,30 @@ namespace pacman {
 			playerSpeed = {0.0f,0.0f};
 			SetTargetFPS(60);
 
+			points = 0;
+			lives = 3;
 			pill1 = { 100, 100 };
 			pillRadius1 = 10;
 
-			block1.height = static_cast <float>(100);
-			block1.width = static_cast <float>(100);
-			block1.x = static_cast <float>(200);
-			block1.y = static_cast <float>(200);
+			block1.height = static_cast <float>(GetScreenHeight());
+			block1.width = static_cast <float>(50);
+			block1.x = static_cast <float>(0);
+			block1.y = static_cast <float>(0);
+
+			block2.height = static_cast <float>(50);
+			block2.width = static_cast <float>(GetScreenWidth());
+			block2.x = static_cast <float>(0);
+			block2.y = static_cast <float>(0);
+
+			block3.height = static_cast <float>(GetScreenHeight());
+			block3.width = static_cast <float>(50);
+			block3.x = static_cast <float>(GetScreenWidth() - 50);
+			block3.y = static_cast <float>(0);
+
+			block4.height = static_cast <float>(50);
+			block4.width = static_cast <float>(GetScreenWidth());
+			block4.x = static_cast <float>(0);
+			block4.y = static_cast <float>(GetScreenHeight() - 50);
 
 			menu.height = static_cast <float>(100);
 			menu.width = static_cast <float>(100);
@@ -97,6 +120,9 @@ namespace pacman {
 			} break;
 			case Credits: {
 				credits::UpdateCredits();
+			} break;
+			case End: {
+				over::UpdateOver();
 			}
 			}
 		}
@@ -128,7 +154,7 @@ namespace pacman {
 					if (IsKeyDown(KEY_A)) {
 						direction = 3;
 						if (playerPosition.x > 0) {
-							playerSpeed.x = -5.0f;
+							playerSpeed.x = -6.0f;
 							playerSpeed.y = 0.0f;
 						}
 					}
@@ -136,26 +162,26 @@ namespace pacman {
 					if (IsKeyDown(KEY_D)) {
 						direction = 4;
 						if (playerPosition.x > 0) {
-							playerSpeed.x = 5.0f;
+							playerSpeed.x = 6.0f;
 							playerSpeed.y = 0.0f;
 						}
 					}
 					if (CheckCollisionCircleRec(playerPosition,playerRadius,block1)) {
 						if (direction == 1) {
-							playerPosition.y += 6.0f;
+							//playerPosition.y = 0.0f;
 						}
 						if (direction == 2) {
-							playerPosition.y -= 6.0f;
+							//playerPosition.y = 0.0f;
 						}
 						if (direction == 3) {
-							playerPosition.x += 6.0f;
+							playerPosition.x += 5.0f;
 						}
 						if (direction == 4) {
-							playerPosition.x -= 6.0f;
+							playerPosition.x -= 5.0f;
 						}
 					}
 					if (CheckCollisionCircles(pill1, pillRadius1, playerPosition, playerRadius)) {
-						if(pill1Active==true){ poinst += 1; }					
+						if(pill1Active==true){ points += 1; }					
 						pill1Active = false;
 					}
 				}
@@ -169,7 +195,13 @@ namespace pacman {
 						gameplay::Screens = gameplay::Menu;
 					}
 				}
+
+				if (lives == 0) {
+					gameOver = !gameOver;
+				}
 			}
+
+			gameplay::Screens = gameplay::End;
 		}
 
 		static void Draw() {
@@ -179,10 +211,16 @@ namespace pacman {
 			ClearBackground(RAYWHITE);
 			DrawCircleV(playerPosition, static_cast<float>(playerRadius), BLACK);
 			DrawRectangle(block1.x,block1.y,block1.width,block1.height,BLUE);
+			DrawRectangle(block2.x, block2.y, block2.width, block2.height, BLUE);
+			DrawRectangle(block3.x, block3.y, block3.width, block3.height, BLUE);
+			DrawRectangle(block4.x, block4.y, block4.width, block4.height, BLUE);
+
 			if (pill1Active == true) {
 				DrawCircleV(pill1, static_cast<float>(pillRadius1), GOLD);
 			}
-			DrawText(TextFormat("SCORE %4i", poinst), 20, 20, 40, LIGHTGRAY);
+			DrawText(TextFormat("SCORE %4i", points), 20, 10, 40, LIGHTGRAY);
+			DrawText(TextFormat("LIVES %4i", lives), 1300, 10, 40, LIGHTGRAY);
+
 
 			if (pause == true) {
 				DrawRectangle(menu.x,menu.y,menu.width,menu.height,GREEN);

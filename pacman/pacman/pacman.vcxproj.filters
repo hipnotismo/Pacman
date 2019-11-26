@@ -17,6 +17,9 @@
     <Filter Include="controls">
       <UniqueIdentifier>{d2718874-a795-4863-96f0-59ff20ea32a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game over">
+      <UniqueIdentifier>{5818c3ea-a2dc-4fec-bdd2-1be2cc321827}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
@@ -32,6 +35,9 @@
     <ClCompile Include="..\src\Controls\controls.cpp">
       <Filter>controls</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Game over\game-over.cpp">
+      <Filter>game over</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Menu\menu.h">
@@ -45,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Controls\controls.h">
       <Filter>controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game over\game-over.h">
+      <Filter>game over</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

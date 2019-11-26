@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\Controls\controls.cpp" />
     <ClCompile Include="..\src\Credits\credits.cpp" />
+    <ClCompile Include="..\src\Game over\game-over.cpp" />
     <ClCompile Include="..\src\Gameplay\gameplay.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Menu\menu.cpp" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\Controls\controls.h" />
     <ClInclude Include="..\src\Credits\credits.h" />
+    <ClInclude Include="..\src\Game over\game-over.h" />
     <ClInclude Include="..\src\Gameplay\gameplay.h" />
     <ClInclude Include="..\src\Menu\menu.h" />
   </ItemGroup>
