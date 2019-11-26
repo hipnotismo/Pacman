@@ -28,6 +28,10 @@ namespace pacman {
 		int playerRadius;
 		Vector2 playerSpeed;
 
+		Vector2 enemiPosition;
+		int enemiRadius;
+		Vector2 enemiSpeed;
+
 		Vector2 pill1;
 		Vector2 pill2;
 		Vector2 pill3;
@@ -45,6 +49,9 @@ namespace pacman {
 		Rectangle block2;
 		Rectangle block3;
 		Rectangle block4;
+		Rectangle block5;
+		Rectangle block6;
+
 		
 		Rectangle menu;
 
@@ -83,6 +90,10 @@ namespace pacman {
 			playerSpeed = {0.0f,0.0f};
 			SetTargetFPS(60);
 
+			enemiPosition = { static_cast<float>(200), static_cast<float>(GetScreenHeight()) / 5 };
+			enemiRadius = 15;
+			enemiSpeed = { 100.0f,0.0f };
+
 			points = 0;
 			lives = 3;
 			pill1 = { 100, 100 };
@@ -116,6 +127,16 @@ namespace pacman {
 			block4.width = static_cast <float>(GetScreenWidth());
 			block4.x = static_cast <float>(0);
 			block4.y = static_cast <float>(GetScreenHeight() - 50);
+
+			block5.height = static_cast <float>(300);
+			block5.width = static_cast <float>(50);
+			block5.x = static_cast <float>(700);
+			block5.y = static_cast <float>(200);
+
+			block6.height = static_cast <float>(300);
+			block6.width = static_cast <float>(50);
+			block6.x = static_cast <float>(900);
+			block6.y = static_cast <float>(200);
 
 			menu.height = static_cast <float>(100);
 			menu.width = static_cast <float>(100);
@@ -155,6 +176,9 @@ namespace pacman {
 					playerPosition.x += playerSpeed.x * GetFrameTime();
 					playerPosition.y += playerSpeed.y * GetFrameTime();
 
+					enemiPosition.x += enemiSpeed.x * GetFrameTime();
+
+
 					if (IsKeyDown(KEY_W)) {
 						direction = 1;
 						if (playerPosition.y > 0) {
@@ -186,6 +210,14 @@ namespace pacman {
 							playerSpeed.y = 0.0f *  GetFrameTime();
 						}
 					}
+
+					if (CheckCollisionCircleRec(enemiPosition, enemiRadius, block1)) {
+						enemiSpeed.x *= -1;
+					}
+					if (CheckCollisionCircleRec(enemiPosition, enemiRadius, block2)) {
+						enemiSpeed.x *= -1;
+					}
+				
 					if (CheckCollisionCircleRec(playerPosition,playerRadius,block1)) {
 						if (direction == 1) {
 							//playerPosition.y = 0.0f;
@@ -244,6 +276,8 @@ namespace pacman {
 			DrawRectangle(block2.x, block2.y, block2.width, block2.height, BLUE);
 			DrawRectangle(block3.x, block3.y, block3.width, block3.height, BLUE);
 			DrawRectangle(block4.x, block4.y, block4.width, block4.height, BLUE);
+			DrawRectangle(block5.x, block5.y, block5.width, block5.height, RED);
+			DrawRectangle(block6.x, block6.y, block6.width, block6.height, RED);
 
 			if (pill1Active == true) {
 				DrawCircleV(pill1, static_cast<float>(pillRadius1), GOLD);
